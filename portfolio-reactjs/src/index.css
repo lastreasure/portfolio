@@ -126,13 +126,14 @@ img {
 }
 
 section {
-    margin-top: 6rem
+    margin-top: 6rem;
+    height: 100vh;
 }
 
 
 /* ======================= Media Queries (small devices such as mobile phones) ======================= */
 
-@media screen and (max-width:1024px) {
+@media screen and (max-width:600px) {
     .container {
         width: var(--container-width-sm);
     }
