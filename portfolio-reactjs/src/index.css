@@ -127,7 +127,7 @@ img {
 
 section {
     margin-top: 6rem;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 
@@ -139,6 +139,6 @@ section {
     }
 }
 
-section > h2{
+section > h2 {
     margin-bottom: 2rem;
 }
