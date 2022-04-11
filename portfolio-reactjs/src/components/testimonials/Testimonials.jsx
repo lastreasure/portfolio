@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useRef, useState }from 'react'
 import './testimonials.css'
+
 import ThumbsUp from '../../assets/thumbs-up.png'
+// import Swiper core and required modules
+import { Navigation, Pagination } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const data = [
   {
@@ -46,11 +56,16 @@ const Testimonials = () => {
     <section id="testimonials">
       <h5>Quotes from colleagues</h5>
 
-      <div className="container testimonials__container">
+      <Swiper className="container testimonials__container"       
+              modules={[Navigation, Pagination]}
+              spaceBetween={40}
+              slidesPerView={1}
+              // navigation={true}
+              pagination={{ clickable: true }}>
         {
           data.map(({id, clientPicture, name, feedback}) => {
             return (
-              <article key={id} className="testimonial">
+              <SwiperSlide key={id} className="testimonial">
               <div className="client__picture">
                 <img src={clientPicture} alt="client" />
               </div>
@@ -58,13 +73,13 @@ const Testimonials = () => {
                 <small className="client__review">
                   {feedback}
                 </small>
-            </article>
+            </SwiperSlide>
             )
           })
         }
 
 
-      </div>
+      </Swiper>
     </section>
   )
 }
