@@ -13,14 +13,11 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm(REACT_APP_EMAIL_SERVICE_ID, REACT_APP_EMAIL_TEMPLATE_ID, form.current, REACT_APP_EMAIL_PUBLIC_KEY)
-      .then((result) => {
-          console.log(result.text);
-      }, (error) => {
-          console.log(error.text);
-      });
-      
+    emailjs.sendForm(REACT_APP_EMAIL_SERVICE_ID, REACT_APP_EMAIL_TEMPLATE_ID, form.current, REACT_APP_EMAIL_PUBLIC_KEY);
+
+    e.target.reset();
   };
+  
   return (
     <section id="contact">
       <h5>Get in Touch</h5>
