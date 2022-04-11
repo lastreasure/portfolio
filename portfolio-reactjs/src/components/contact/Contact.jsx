@@ -1,10 +1,26 @@
 /* eslint-disable react/jsx-no-target-blank */
-import React from 'react'
-import './contact.css'
-import {HiOutlineMail} from 'react-icons/hi'
-import Callmoji from '../../assets/tishmoji-call.png'
+import React, { useRef } from 'react';
+import './contact.css';
+import {HiOutlineMail} from 'react-icons/hi';
+import Callmoji from '../../assets/tishmoji-call.png';
+import emailjs from 'emailjs-com'
+
+const {REACT_APP_EMAIL_SERVICE_ID, REACT_APP_EMAIL_TEMPLATE_ID, REACT_APP_EMAIL_PUBLIC_KEY} = process.env;
 
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm(REACT_APP_EMAIL_SERVICE_ID, REACT_APP_EMAIL_TEMPLATE_ID, form.current, REACT_APP_EMAIL_PUBLIC_KEY)
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+      
+  };
   return (
     <section id="contact">
       <h5>Get in Touch</h5>
@@ -23,7 +39,7 @@ const Contact = () => {
           </div>
         </div>
         {/* form */}
-        <form action="">
+        <form ref={form} onSubmit={sendEmail}>
           <input type="text" name="name" placeholder="Your Full Name" required/>
           <input type="email" name="email" placeholder='Your Email Address'required />
           <textarea name="message" rows="7" placeholder='Your Message' required></textarea>
