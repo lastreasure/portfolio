@@ -48,7 +48,7 @@ const data = [
   {
     id: 6,
     image: portfolioImage6,
-    title: 'Python Tic Tac Toe',
+    title: 'Python Rock Paper Scissors',
     github: 'https://github.com',
     demo: ProtagonistShrug
   },
